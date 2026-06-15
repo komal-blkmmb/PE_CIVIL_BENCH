@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation Performance of Large Language Models on Exam Problems and Automated Component Design" />
+  <title>PE Civil Bench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">PE Civil Bench</span>
+      <ul class="nav-links">
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#contributions">Contributions</a></li>
+        <li><a href="#benchmark">Benchmark</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#design">Design Pipeline</a></li>
+        <li><a href="#bibtex">BibTeX</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="venue-badge">University of Houston &nbsp;·&nbsp; Structures &amp; AI Lab</p>
+      <h1 class="paper-title">
+        PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation Performance of Large Language Models on Exam Problems and Automated Component Design
+      </h1>
+
+      <div class="authors">
+        <a href="#" class="author">Saurav Silwal</a><sup>1</sup>,
+        <a href="https://joshgao.com" class="author">Joshua Gao</a><sup>2</sup>,
+        <a href="https://subinvarghese.com/" class="author">Subin Varghese</a><sup>2</sup>,
+        <a href="https://scholar.google.com/citations?user=f9M0CiIAAAAJ&hl=en" class="author">Vedhus Hoskere</a><sup>1,2*</sup>
+      </div>
+      <div class="affiliations">
+        <span><sup>1</sup>Dept. of Civil &amp; Environmental Engineering, University of Houston</span>
+        <span><sup>2</sup>Dept. of Electrical &amp; Computer Engineering, University of Houston</span>
+        <span><sup>*</sup>Corresponding author: <a href="mailto:vhoskere@Central.UH.EDU">vhoskere@Central.UH.EDU</a></span>
+      </div>
+
+      <div class="link-buttons">
+        <a href="#" class="btn btn-primary" id="btn-paper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          Paper
+        </a>
+        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Code
+        </a>
+        <a href="#" class="btn btn-secondary" id="btn-data">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          Data
+        </a>
+      </div>
+
+      <!-- Hero stat strip -->
+      <div class="stat-strip">
+        <div class="stat">
+          <span class="stat-num">150</span>
+          <span class="stat-label">FE / PE Civil Questions</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">13</span>
+          <span class="stat-label">LLMs Evaluated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">33</span>
+          <span class="stat-label">RC Beam Designs</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">r ≥ 0.90</span>
+          <span class="stat-label">Agreement with ETABS</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">&lt;$2</span>
+          <span class="stat-label">Cost per Design Run</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABSTRACT -->
+  <section id="abstract" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Large language models are increasingly being piloted in civil engineering firms to automate workflows and help engineers navigate dense design codes and specifications. However, safety-critical use remains limited by reliability concerns, inconsistent reasoning, and the need for auditable, code-grounded outputs suitable for quality control. While retrieval augmentation and agentic workflows have improved factuality in other domains, their effectiveness in civil engineering has not been systematically established, and it remains unclear how to scale them into transparent, code-compliant design pipelines with reliable evaluation.
+      </p>
+      <p class="abstract-text">
+        To address these limitations, we develop the first benchmark, <strong>PE Civil Bench</strong>, consisting of Fundamentals of Engineering and Professional Engineering Civil examination questions and produce baseline scores of thirteen frontier and open-weight large language models, including the state-of-the-art GPT-5.5, under baseline prompting, conventional retrieval-augmented generation (RAG), and agentic RAG. We then develop a retrieval-augmented multi-agent framework for fully automated concrete element design, demonstrated on reinforced concrete beams and columns, that infers design steps from worked examples and performs code retrieval, calculation, validation, and iterative self-correction with transparent traces. Across 33 beam configurations it produced code-compliant designs in all cases and closely matched ETABS finite-element outputs (r&nbsp;≥&nbsp;0.90). Requiring only a new reference example and no reprogramming, the same architecture extended to column design. Finally, we introduce an autonomous RAG-based evaluator that extracts assessment criteria from reference solutions and agrees strongly with a traditional rule-based scorer (r&nbsp;=&nbsp;0.976).
+      </p>
+    </div>
+  </section>
+
+  <!-- THREE CONTRIBUTIONS -->
+  <section id="contributions" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title light">Three Contributions</h2>
+      <div class="contrib-grid">
+
+        <div class="contrib-card">
+          <div class="contrib-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="4" width="36" height="40" rx="3" fill="#1a3a5c" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="16" x2="34" y2="16" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="23" x2="34" y2="23" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="30" x2="26" y2="30" stroke="#4a90d9" stroke-width="2"/><circle cx="38" cy="38" r="8" fill="#4a90d9"/><text x="38" y="42" text-anchor="middle" fill="white" font-size="10" font-weight="bold">✓</text></svg>
+          </div>
+          <div class="contrib-num">01</div>
+          <h3>PE Civil Bench</h3>
+          <p>The first open benchmark of 150 FE- and PE-style civil engineering problems spanning 8 subdisciplines, 3 difficulty tiers, and multiple question types — enabling systematic evaluation of base, RAG-augmented, and agentic LLMs.</p>
+          <ul class="contrib-facts">
+            <li>110 MCQ (FE-style) + 40 open-ended numerical (PE-style)</li>
+            <li>Structural, geotechnical, water resources, transportation &amp; more</li>
+            <li>Easy / Medium / Hard difficulty taxonomy</li>
+          </ul>
+        </div>
+
+        <div class="contrib-card contrib-card--accent">
+          <div class="contrib-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="18" height="14" rx="2" fill="#1a3a5c" stroke="#f0c040" stroke-width="2"/><rect x="26" y="10" width="18" height="14" rx="2" fill="#1a3a5c" stroke="#f0c040" stroke-width="2"/><rect x="14" y="30" width="20" height="14" rx="2" fill="#1a3a5c" stroke="#f0c040" stroke-width="2"/><line x1="13" y1="17" x2="4" y2="17" stroke="#f0c040" stroke-width="1.5"/><line x1="35" y1="17" x2="44" y2="17" stroke="#f0c040" stroke-width="1.5"/><line x1="24" y1="24" x2="24" y2="30" stroke="#f0c040" stroke-width="1.5"/></svg>
+          </div>
+          <div class="contrib-num">02</div>
+          <h3>Agentic Design Pipeline</h3>
+          <p>A self-correcting multi-agent framework for fully automated, code-compliant structural design. Design logic is inferred dynamically from reference examples — no hard-coded rules, no reprogramming when codes change.</p>
+          <ul class="contrib-facts">
+            <li>100% code-compliant across 33 RC beam configurations</li>
+            <li>Extends to column design with only a new reference example</li>
+            <li>Under $2 per complete design run using GPT-4o</li>
+          </ul>
+        </div>
+
+        <div class="contrib-card">
+          <div class="contrib-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" fill="#1a3a5c" stroke="#4a90d9" stroke-width="2"/><polyline points="14,24 20,30 34,18" stroke="#4a90d9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="contrib-num">03</div>
+          <h3>RAG-Based Evaluator</h3>
+          <p>An autonomous evaluation framework that extracts assessment criteria from retrieved reference solutions and verifies design accuracy without manual rubric construction — scaling quality control alongside the design pipeline.</p>
+          <ul class="contrib-facts">
+            <li>r = 0.976 agreement with traditional hardcoded scorer</li>
+            <li>R² = 0.953 across 66 RC beam designs</li>
+            <li>Learns criteria from examples, not hand-coded rules</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENCHMARK COMPOSITION -->
+  <section id="benchmark" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">PE Civil Bench Composition</h2>
+      <p class="section-sub">150 problems curated by professional engineers at the Structures and AI Lab, University of Houston, covering all major FE/PE Civil subdisciplines.</p>
+
+      <div class="bench-grid">
+        <div class="bench-table-wrap">
+          <table class="bench-table">
+            <thead>
+              <tr><th colspan="3">Benchmark Breakdown (N = 150)</th></tr>
+              <tr><th>Dimension</th><th>Category</th><th>n (%)</th></tr>
+            </thead>
+            <tbody>
+              <tr class="row-group"><td rowspan="8"><strong>Subdiscipline</strong></td><td>Structural</td><td>50 (33%)</td></tr>
+              <tr><td>Water Resources</td><td>27 (18%)</td></tr>
+              <tr><td>Mathematics</td><td>22 (15%)</td></tr>
+              <tr><td>Geotechnical</td><td>21 (14%)</td></tr>
+              <tr><td>Transportation</td><td>13 (9%)</td></tr>
+              <tr><td>Construction</td><td>12 (8%)</td></tr>
+              <tr><td>Ethics</td><td>3 (2%)</td></tr>
+              <tr><td>Surveying</td><td>2 (1%)</td></tr>
+              <tr class="row-group"><td rowspan="3"><strong>Difficulty</strong></td><td>Easy</td><td>47 (31%)</td></tr>
+              <tr><td>Medium</td><td>63 (42%)</td></tr>
+              <tr><td>Hard</td><td>40 (27%)</td></tr>
+              <tr class="row-group"><td rowspan="3"><strong>Question Type</strong></td><td>Numerical</td><td>114 (76%)</td></tr>
+              <tr><td>Conceptual</td><td>26 (17%)</td></tr>
+              <tr><td>Code Interpretation</td><td>10 (7%)</td></tr>
+              <tr class="row-group"><td rowspan="2"><strong>Reasoning Demand</strong></td><td>Multi-step</td><td>111 (74%)</td></tr>
+              <tr><td>Single-step</td><td>39 (26%)</td></tr>
+              <tr class="row-group"><td rowspan="2"><strong>Response Format</strong></td><td>Multiple Choice (MCQ)</td><td>110 (73%)</td></tr>
+              <tr><td>Open-Ended Numerical</td><td>40 (27%)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sample-questions">
+          <h3>Sample Questions</h3>
+
+          <div class="sample-q easy">
+            <div class="q-badge">EASY &nbsp;·&nbsp; FE-Style MCQ &nbsp;·&nbsp; Structural</div>
+            <p class="q-text">The elastic modulus of concrete with f'c = 3 ksi and a unit weight of 145 pcf is almost nearly:</p>
+            <p class="q-choices">A. 3,155 ksi &nbsp;&nbsp; B. 3,834 ksi &nbsp;&nbsp; C. 3,484 ksi &nbsp;&nbsp; D. 3,562 ksi</p>
+          </div>
+
+          <div class="sample-q medium">
+            <div class="q-badge">MEDIUM &nbsp;·&nbsp; FE-Style MCQ &nbsp;·&nbsp; Geotechnical</div>
+            <p class="q-text">A sand sample was tested in a triaxial device. At the beginning of the test, a confining pressure of 50 psi was applied, and deviatoric pressure was then applied. The sample failed when the applied external pressure reached 320 psi. The angle of internal friction of the sand is most nearly:</p>
+            <p class="q-choices">A. 32° &nbsp;&nbsp; B. 37° &nbsp;&nbsp; C. 43° &nbsp;&nbsp; D. 47°</p>
+          </div>
+
+          <div class="sample-q hard">
+            <div class="q-badge">HARD &nbsp;·&nbsp; PE-Style Open-Ended &nbsp;·&nbsp; Transportation</div>
+            <p class="q-text">Consider a four-legged intersection with a single lane for each approach. The intersection is currently signalized with simple two-phase actuated control and a 50-second phase duration for the northbound/southbound approaches, with 4-second change and 1.5-second clearance intervals. The southbound approach has a saturation flow rate of 1,615 vehicles per hour and a queue of 14 vehicles. Assuming a green extension time of 4.5 seconds, the arrival flow rate during the effective green time for the southbound approach is most nearly:</p>
+            <p class="q-choices q-open"><em>Note: Numerical answer required — no answer choices provided.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS TABLE -->
+  <section id="results" class="section section-ruled">
+    <div class="container">
+      <h2 class="section-title">Benchmark Results</h2>
+      <p class="section-sub">Overall accuracy across 13 LLMs under three augmentation strategies on PE Civil Bench (N = 150). Agentic RAG improved every evaluable model with no degradations.</p>
+
+      <div class="table-scroll">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Model</th>
+              <th colspan="3">Base LLM</th>
+              <th colspan="3">Vector RAG</th>
+              <th colspan="3">Agentic RAG</th>
+            </tr>
+            <tr>
+              <th>MCQ</th><th>OE</th><th>Overall</th>
+              <th>MCQ</th><th>OE</th><th>Overall</th>
+              <th>MCQ</th><th>OE</th><th>Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="model-group-header"><td colspan="10">Reasoning-Optimized Models</td></tr>
+            <tr class="top-model">
+              <td>GPT-5.5</td>
+              <td>93.6%</td><td>52.5%</td><td>82.7%</td>
+              <td>94.5%</td><td>65.0%</td><td>86.7%</td>
+              <td class="best">94.5%</td><td class="best">67.5%</td><td class="best">87.3%</td>
+            </tr>
+            <tr>
+              <td>GPT-5.4</td>
+              <td>91.0%</td><td>42.5%</td><td>78.0%</td>
+              <td>95.5%</td><td>45.0%</td><td>82.0%</td>
+              <td class="best">97.3%</td><td class="best">50.0%</td><td class="best">84.7%</td>
+            </tr>
+            <tr>
+              <td>o4-mini</td>
+              <td>87.0%</td><td>22.5%</td><td>70.0%</td>
+              <td>87.0%</td><td>22.5%</td><td>70.0%</td>
+              <td class="best">87.0%</td><td class="best">32.5%</td><td class="best">72.0%</td>
+            </tr>
+            <tr>
+              <td>o3-mini</td>
+              <td>84.0%</td><td>15.0%</td><td>65.3%</td>
+              <td>84.0%</td><td>30.0%</td><td>69.3%</td>
+              <td class="best">86.3%</td><td class="best">30.0%</td><td class="best">71.3%</td>
+            </tr>
+            <tr>
+              <td>Gemini 2.5 Pro</td>
+              <td>63.0%</td><td>12.5%</td><td>49.3%</td>
+              <td>73.0%</td><td>32.5%</td><td>57.3%</td>
+              <td class="best">93.6%</td><td class="best">35.0%</td><td class="best gain">78.0% <span class="delta">+28.7pp</span></td>
+            </tr>
+            <tr>
+              <td>DeepSeek R1 7B</td>
+              <td>40.0%</td><td>0.0%</td><td>29.3%</td>
+              <td>39.0%</td><td>0.0%</td><td>28.7%</td>
+              <td colspan="3" class="na-cell">† No tool-calling support</td>
+            </tr>
+            <tr class="model-group-header"><td colspan="10">General-Purpose Flagship Models</td></tr>
+            <tr>
+              <td>GPT-4o <span class="selected-tag">★ selected</span></td>
+              <td>66.3%</td><td>2.5%</td><td>49.3%</td>
+              <td>71.7%</td><td>25.0%</td><td>59.3%</td>
+              <td class="best">86.4%</td><td class="best">27.5%</td><td class="best gain">70.7% <span class="delta">+21.4pp</span></td>
+            </tr>
+            <tr>
+              <td>GPT-4o-mini</td>
+              <td>54.5%</td><td>2.5%</td><td>40.7%</td>
+              <td>58.1%</td><td>10.0%</td><td>45.3%</td>
+              <td class="best">74.0%</td><td class="best">12.5%</td><td class="best">52.7%</td>
+            </tr>
+            <tr class="model-group-header"><td colspan="10">Open-Source Models</td></tr>
+            <tr>
+              <td>Llama 3.3 70B</td>
+              <td>61.8%</td><td>2.5%</td><td>46.0%</td>
+              <td>60.0%</td><td>12.5%</td><td>43.3%</td>
+              <td class="best">61.0%</td><td class="best">17.5%</td><td class="best">49.3%</td>
+            </tr>
+            <tr>
+              <td>Llama 3.1 405B</td>
+              <td>57.3%</td><td>2.5%</td><td>42.7%</td>
+              <td>62.0%</td><td>10.0%</td><td>48.0%</td>
+              <td class="best">74.0%</td><td class="best">25.0%</td><td class="best">60.7%</td>
+            </tr>
+            <tr>
+              <td>Llama 3.1 8B</td>
+              <td>37.2%</td><td>2.5%</td><td>28.0%</td>
+              <td>34.5%</td><td>7.5%</td><td>27.3%</td>
+              <td class="best">36.0%</td><td class="best">10.0%</td><td class="best">29.3%</td>
+            </tr>
+            <tr>
+              <td>Mistral 7B</td>
+              <td>40.0%</td><td>0.0%</td><td>29.3%</td>
+              <td class="degrade">32.0%</td><td class="degrade">0.0%</td><td class="degrade">23.3% <span class="delta neg">−6.0pp</span></td>
+              <td class="best">43.0%</td><td class="best">2.5%</td><td class="best">32.0%</td>
+            </tr>
+            <tr>
+              <td>Gemma2 9B</td>
+              <td>29.0%</td><td>0.0%</td><td>21.3%</td>
+              <td>32.0%</td><td>5.0%</td><td>24.7%</td>
+              <td colspan="3" class="na-cell">† No tool-calling support</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">† DeepSeek R1 7B and Gemma2 9B do not support tool calling and could not be evaluated under Agentic RAG. MCQ = Multiple Choice Questions (n=110); OE = Open-Ended numerical (n=40). <span class="legend-best">■</span> Best per model &nbsp; <span class="legend-degrade">■</span> Degraded vs. baseline</p>
+
+      <!-- Key findings callouts -->
+      <div class="findings-row">
+        <div class="finding-card">
+          <div class="finding-icon">📈</div>
+          <strong>Agentic RAG: zero degradations</strong>
+          <p>Unlike Vector RAG (which hurt Mistral by 6pp and Llama 3.3 70B by 2.7pp), Agentic RAG improved every evaluable model.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-icon">🚀</div>
+          <strong>Biggest jump: Gemini 2.5 Pro</strong>
+          <p>+28.7 percentage points with Agentic RAG (49.3% → 78.0%), the largest gain among all models evaluated.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-icon">⚙️</div>
+          <strong>Iterative retrieval is the key</strong>
+          <p>Ablation shows removing multi-turn retrieval causes the largest drops: −8.7pp for Gemini, −16.0pp for GPT-4o.</p>
+        </div>
+        <div class="finding-card">
+          <div class="finding-icon">🎯</div>
+          <strong>Residual bottleneck: grounding</strong>
+          <p>After augmentation, 68.6% of remaining failures are grounding or conceptual errors — selecting the right principle, not computing it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN PIPELINE -->
+  <section id="design" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Three-Phase Methodology</h2>
+      <p class="section-sub">From strategy benchmarking through automated design to quality verification — a unified pipeline for AI-assisted civil engineering.</p>
+
+      <div class="phases">
+
+        <div class="phase">
+          <div class="phase-num">Phase 1</div>
+          <h3>Systematic Benchmarking</h3>
+          <p>Three augmentation strategies of increasing sophistication — Base LLM, Vector RAG, and Agentic RAG — are evaluated on PE Civil Bench using LangChain with consistent hyperparameters across all 13 models.</p>
+          <div class="phase-detail">
+            <div class="phase-item">
+              <strong>Base LLM</strong> — intrinsic reasoning, no retrieval
+            </div>
+            <div class="phase-item">
+              <strong>Vector RAG</strong> — single-pass semantic retrieval from the FE Reference Handbook
+            </div>
+            <div class="phase-item">
+              <strong>Agentic RAG</strong> — iterative retrieval loop with formula injection and self-reflection (ReAct-inspired, LangGraph)
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-arrow">→</div>
+
+        <div class="phase phase--accent">
+          <div class="phase-num">Phase 2</div>
+          <h3>Agentic Design Generation</h3>
+          <p>The best-performing strategy drives a self-correcting multi-agent framework for code-compliant structural design. Design logic is inferred dynamically — no hard-coded procedures.</p>
+          <div class="phase-detail">
+            <div class="phase-item"><strong>Planner</strong> — extracts design steps from reference examples</div>
+            <div class="phase-item"><strong>Executor</strong> — agentic RAG retrieval + Python REPL for calculations</div>
+            <div class="phase-item"><strong>Validator</strong> — hierarchical error detection (local fix or full restart)</div>
+            <div class="phase-item"><strong>Report Generator</strong> — traceable, auditable output with ACI 318 references</div>
+          </div>
+        </div>
+
+        <div class="phase-arrow">→</div>
+
+        <div class="phase">
+          <div class="phase-num">Phase 3</div>
+          <h3>Autonomous Evaluation</h3>
+          <p>A RAG-based evaluation framework learns assessment criteria from reference solutions and scores designs without manual rubric construction.</p>
+          <div class="phase-detail">
+            <div class="phase-item"><strong>Retriever</strong> — finds relevant reference designs by semantic search</div>
+            <div class="phase-item"><strong>Rubric Generator</strong> — extracts methodology and converts to scoring criteria</div>
+            <div class="phase-item"><strong>Evaluator</strong> — LLM-based agent assigns weighted scores with justifications</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Design results stats -->
+      <div class="design-results">
+        <h3>Automated RC Beam Design Results</h3>
+        <div class="design-stats-grid">
+          <div class="design-stat">
+            <span class="ds-num">33/33</span>
+            <span class="ds-label">Code-compliant designs</span>
+          </div>
+          <div class="design-stat">
+            <span class="ds-num">r = 0.99</span>
+            <span class="ds-label">Moment &amp; shear vs ETABS</span>
+          </div>
+          <div class="design-stat">
+            <span class="ds-num">r = 0.976</span>
+            <span class="ds-label">RAG vs hardcoded evaluator</span>
+          </div>
+          <div class="design-stat">
+            <span class="ds-num">&lt;$2</span>
+            <span class="ds-label">Per beam design (GPT-4o)</span>
+          </div>
+          <div class="design-stat">
+            <span class="ds-num">0 changes</span>
+            <span class="ds-label">To extend to column design</span>
+          </div>
+        </div>
+        <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBTEX -->
+  <section id="bibtex" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title light">BibTeX</h2>
+      <div class="bibtex-wrap">
+        <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+        <pre class="bibtex" id="bibtex-block">@article{silwal2025pecivil,
+  title   = {PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation
+             Performance of Large Language Models on Exam Problems and
+             Automated Component Design},
+  author  = {Silwal, Saurav and Gao, Joshua and Varghese, Subin
+             and Hoskere, Vedhus},
+  year    = {2025},
+  url     = {https://huggingface.co/datasets/hoskerelab/PE_Civil_Bench}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <strong>Structures &amp; Artificial Intelligence Lab</strong> &nbsp;·&nbsp; University of Houston
+      </p>
+      <p>
+        Supported by the Center for Visual Structural Expertise for Resilience (C-ViSER) at UH.
+      </p>
+      <p class="footer-links">
+        <a href="#">Paper</a> &nbsp;·&nbsp;
+        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation">Code</a> &nbsp;·&nbsp;
+        <a href="#">Data</a> &nbsp;·&nbsp;
+        <a href="https://drags99.github.io/bridge-eqa/">Related Work: BridgeEQA</a>
+      </p>
+      <p class="footer-small">Website template inspired by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
