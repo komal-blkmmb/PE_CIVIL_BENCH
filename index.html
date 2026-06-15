@@ -617,7 +617,7 @@ sup { font-size: 0.65em; vertical-align: super; }
       </div>
 
       <!-- CORRELATION FIGURE -->
-      <div class="corr-section reveal">
+      <div class="corr-section">
         <h3>Evaluator Correlation: RAG-Based vs. Hardcoded Scoring</h3>
         <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction. The Pearson correlation coefficient is r&nbsp;=&nbsp;0.976, with R&sup2;&nbsp;=&nbsp;0.953 indicating that 95.3% of variance in RAG-based scores is explained by the hardcoded scores. The RMSE of 4.69 represents under 8% of the 36&ndash;98 point scale, confirming practical accuracy.</p>
         <div class="corr-fig-wrap">
@@ -661,7 +661,7 @@ sup { font-size: 0.65em; vertical-align: super; }
   author  = {Silwal, Saurav and Gao, Joshua and Varghese, Subin
              and Hoskere, Vedhus},
   journal = {Computer-Aided Civil and Infrastructure Engineering},
-  year    = {2025},
+  year    = {2026},
   url     = {https://www.sciencedirect.com/science/article/pii/S1093968726031129}
 }</pre>
       </div>
@@ -691,37 +691,5 @@ sup { font-size: 0.65em; vertical-align: super; }
   </footer>
 
   <script src="main.js"></script>
-  <script>
-// Scroll Reveal (include corr-section)
-const revealEls2 = document.querySelectorAll('.corr-section');
-revealEls2.forEach(el => el.classList.add('reveal'));
-const observer2 = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer2.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls2.forEach(el => observer2.observe(el));
-
-// Copy BibTeX
-function copyBibtex() {
-  const text = document.getElementById('bibtex-block').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    const orig = btn.textContent;
-    btn.textContent = 'Copied!';
-    btn.style.color = '#3a9e5c';
-    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
-  });
-}
-
-// Navbar border on scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.style.borderBottomColor = window.scrollY > 60 ? 'rgba(74,144,217,0.35)' : 'rgba(74,144,217,0.2)';
-}, { passive: true });
-  </script>
 </body>
 </html>
