@@ -33,20 +33,7 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 sup { font-size: 0.65em; vertical-align: super; }
 
-/* VENUE STRIP */
-.venue-strip {
-  background: var(--gold);
-  padding: 9px 24px;
-  text-align: center;
-}
-.venue-strip-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
-}
-.venue-strip-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); }
-.venue-strip-name  { font-family: var(--font-serif); font-size: 0.88rem; font-weight: 600; color: var(--navy); }
-.venue-strip-link  { font-size: 0.78rem; font-weight: 600; color: var(--navy); text-decoration: underline; opacity: 0.75; }
-.venue-strip-link:hover { opacity: 1; color: var(--navy); }
+
 
 /* NAVBAR */
 #navbar {
@@ -237,14 +224,7 @@ sup { font-size: 0.65em; vertical-align: super; }
 </head>
 <body>
 
-  <!-- CACAIE VENUE STRIP -->
-  <div class="venue-strip">
-    <div class="venue-strip-inner">
-      <span class="venue-strip-label">Published in</span>
-      <span class="venue-strip-name">Computer-Aided Civil and Infrastructure Engineering (CACAIE)</span>
-      <a href="https://www.sciencedirect.com/science/article/pii/S1093968726031129" target="_blank" rel="noopener" class="venue-strip-link">View Paper &#8594;</a>
-    </div>
-  </div>
+
 
   <!-- NAV -->
   <nav id="navbar">
@@ -264,7 +244,7 @@ sup { font-size: 0.65em; vertical-align: super; }
   <!-- HERO -->
   <header id="hero" class="hero">
     <div class="hero-inner">
-      <p class="venue-badge">University of Houston &nbsp;&middot;&nbsp; Structures &amp; AI Lab</p>
+      <p class="venue-badge">Computer-Aided Civil and Infrastructure Engineering &nbsp;&middot;&nbsp; University of Houston &nbsp;&middot;&nbsp; Structures &amp; AI Lab</p>
       <h1 class="paper-title">
         PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation Performance of Large Language Models on Exam Problems and Automated Component Design
       </h1>
@@ -569,7 +549,7 @@ sup { font-size: 0.65em; vertical-align: super; }
         <h3>Evaluator Correlation: RAG-Based vs. Hardcoded Scoring</h3>
         <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction.</p>
         <div class="corr-fig-wrap">
-          <img src="Figure_12.png"
+          <img src="https://raw.githubusercontent.com/komal-blkmmb/PE_CIVIL_BENCH/main/Figure_12.png"
                alt="Scatter plot showing correlation between RAG-based and hardcoded evaluation scores for 66 RC beam designs. Green points (Regular Beam Design) cluster in the upper right; red points (Ablated Pipeline Design) cluster in the lower left. Pearson r = 0.976, R-squared = 0.953, RMSE = 4.69." />
           <div class="corr-stats">
             <div class="corr-stat-item">
