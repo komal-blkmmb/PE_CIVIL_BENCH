@@ -241,6 +241,7 @@ sup { font-size: 0.65em; vertical-align: super; }
         <li><a href="#design">Methodology</a></li>
         <li><a href="#benchmark">Benchmark</a></li>
         <li><a href="#results">Results</a></li>
+        <li><a href="#design-results">RC Beam Design</a></li>
         <li><a href="#bibtex">BibTeX</a></li>
       </ul>
     </div>
@@ -402,17 +403,6 @@ sup { font-size: 0.65em; vertical-align: super; }
         </div>
       </div>
 
-      <div class="design-results">
-        <h3>Automated RC Beam Design Results</h3>
-        <div class="design-stats-grid">
-          <div class="design-stat"><span class="ds-num">33/33</span><span class="ds-label">Code-compliant designs</span></div>
-          <div class="design-stat"><span class="ds-num">r = 0.99</span><span class="ds-label">Moment &amp; shear vs ETABS</span></div>
-          <div class="design-stat"><span class="ds-num">r = 0.976</span><span class="ds-label">RAG vs hardcoded evaluator</span></div>
-          <div class="design-stat"><span class="ds-num">&lt;$2</span><span class="ds-label">Per beam design (GPT-4o)</span></div>
-          <div class="design-stat"><span class="ds-num">0 changes</span><span class="ds-label">To extend to column design</span></div>
-        </div>
-        <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
-      </div>
     </div>
   </section>
 
@@ -605,10 +595,31 @@ sup { font-size: 0.65em; vertical-align: super; }
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- AUTOMATED RC BEAM DESIGN RESULTS -->
+  <section id="design-results" class="section section-ruled">
+    <div class="container">
+      <h2 class="section-title">Automated RC Beam Design Results</h2>
+      <p class="section-sub">A self-correcting multi-agent framework produced code-compliant reinforced concrete beam designs across all 33 configurations, closely matching ETABS finite-element outputs with no hard-coded design rules.</p>
+
+      <div class="design-results" style="margin-bottom: 48px;">
+        <h3>Pipeline Performance Summary</h3>
+        <div class="design-stats-grid">
+          <div class="design-stat"><span class="ds-num">33/33</span><span class="ds-label">Code-compliant designs</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.99</span><span class="ds-label">Moment &amp; shear vs ETABS</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.976</span><span class="ds-label">RAG vs hardcoded evaluator</span></div>
+          <div class="design-stat"><span class="ds-num">&lt;$2</span><span class="ds-label">Per beam design (GPT-4o)</span></div>
+          <div class="design-stat"><span class="ds-num">0 changes</span><span class="ds-label">To extend to column design</span></div>
+        </div>
+        <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
+      </div>
+
       <!-- CORRELATION FIGURE -->
       <div class="corr-section reveal">
         <h3>Evaluator Correlation: RAG-Based vs. Hardcoded Scoring</h3>
-        <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction.</p>
+        <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction. The Pearson correlation coefficient is r&nbsp;=&nbsp;0.976, with R&sup2;&nbsp;=&nbsp;0.953 indicating that 95.3% of variance in RAG-based scores is explained by the hardcoded scores. The RMSE of 4.69 represents under 8% of the 36&ndash;98 point scale, confirming practical accuracy.</p>
         <div class="corr-fig-wrap">
           <img src="Figure%20_12.png"
                alt="Scatter plot showing correlation between RAG-based and hardcoded evaluation scores for 66 RC beam designs. Green points (Regular Beam Design) cluster in the upper right; red points (Ablated Pipeline Design) cluster in the lower left. Pearson r = 0.976, R-squared = 0.953, RMSE = 4.69." />
