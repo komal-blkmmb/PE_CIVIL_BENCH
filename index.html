@@ -7,9 +7,244 @@
   <title>PE Civil Bench</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:   #0d1f35;
+  --steel:  #1a3a5c;
+  --accent: #4a90d9;
+  --gold:   #f0c040;
+  --light:  #f5f7fa;
+  --ruled:  #eef1f6;
+  --text:   #1c2b3a;
+  --muted:  #5a6a7a;
+  --border: #d0d8e4;
+  --best:   #e8f4ec;
+  --best-border: #3a9e5c;
+  --degrade: #fdecea;
+  --degrade-border: #c0392b;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+sup { font-size: 0.65em; vertical-align: super; }
+
+/* VENUE STRIP */
+.venue-strip {
+  background: var(--gold);
+  padding: 9px 24px;
+  text-align: center;
+}
+.venue-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+}
+.venue-strip-label { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); }
+.venue-strip-name  { font-family: var(--font-serif); font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+.venue-strip-link  { font-size: 0.78rem; font-weight: 600; color: var(--navy); text-decoration: underline; opacity: 0.75; }
+.venue-strip-link:hover { opacity: 1; color: var(--navy); }
+
+/* NAVBAR */
+#navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,31,53,0.97); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(74,144,217,0.2);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.nav-logo { font-family: var(--font-serif); font-weight: 600; font-size: 1rem; color: #fff; letter-spacing: 0.02em; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.75); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* HERO */
+.hero { background: linear-gradient(160deg, var(--navy) 0%, var(--steel) 100%); padding: 72px 24px 0; text-align: center; }
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.venue-badge { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.paper-title { font-family: var(--font-serif); font-size: clamp(1.55rem,4vw,2.25rem); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 28px; letter-spacing: -0.01em; }
+.authors { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+.author { color: #a8d4f5; font-weight: 500; }
+.author:hover { color: var(--gold); text-decoration: underline; }
+.affiliations { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+.affiliations a { color: rgba(255,255,255,0.65); }
+
+/* BUTTONS */
+.link-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 40px; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; }
+.btn svg { width: 16px; height: 16px; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.25); text-decoration: none; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+.btn-secondary:hover { background: rgba(255,255,255,0.18); }
+
+/* STAT STRIP */
+.stat-strip { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; align-items: center; padding: 0 32px; }
+.stat-num { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; text-align: center; }
+.stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.12); }
+
+/* SECTIONS */
+.section { padding: 80px 24px; }
+.section-light { background: #fff; }
+.section-dark  { background: var(--navy); }
+.section-ruled { background: var(--ruled); }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-title { font-family: var(--font-serif); font-size: clamp(1.4rem,3vw,1.9rem); font-weight: 700; color: var(--navy); margin-bottom: 12px; letter-spacing: -0.01em; }
+.section-title.light { color: #fff; }
+.section-sub { font-size: 1rem; color: var(--muted); max-width: 680px; margin-bottom: 48px; line-height: 1.7; }
+
+/* ABSTRACT */
+.abstract-text { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.85; color: #2a3a4a; max-width: 760px; margin-bottom: 16px; }
+
+/* CONTRIBUTIONS */
+.contrib-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; }
+.contrib-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(74,144,217,0.2); border-radius: 10px; padding: 32px 28px; }
+.contrib-card--accent { border-color: rgba(240,192,64,0.4); background: rgba(240,192,64,0.04); }
+.contrib-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+.contrib-icon svg { width: 100%; height: 100%; }
+.contrib-num { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 8px; text-transform: uppercase; }
+.contrib-card h3 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.contrib-card p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.7; margin-bottom: 16px; }
+.contrib-facts { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.contrib-facts li { font-size: 0.8rem; color: rgba(255,255,255,0.5); padding-left: 16px; position: relative; }
+.contrib-facts li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+/* BENCHMARK */
+.bench-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
+@media (max-width: 760px) { .bench-grid { grid-template-columns: 1fr; } }
+.bench-table-wrap { overflow-x: auto; }
+.bench-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+.bench-table thead tr:first-child th { background: var(--navy); color: #fff; font-family: var(--font-serif); font-size: 0.95rem; padding: 12px 14px; text-align: left; }
+.bench-table thead tr:last-child th { background: var(--steel); color: rgba(255,255,255,0.7); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 8px 14px; }
+.bench-table tbody td { padding: 8px 14px; border-bottom: 1px solid var(--border); color: var(--text); }
+.bench-table .row-group td:first-child { font-weight: 600; vertical-align: top; }
+.sample-questions h3 { font-family: var(--font-serif); font-size: 1.1rem; color: var(--navy); margin-bottom: 16px; }
+.sample-q { border-radius: 8px; padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+.sample-q.easy   { background: #eefaf2; border-color: #3a9e5c; }
+.sample-q.medium { background: #fff8e6; border-color: #e0a020; }
+.sample-q.hard   { background: #fdecea; border-color: #c0392b; }
+.q-badge { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; color: var(--muted); }
+.q-text  { font-size: 0.85rem; line-height: 1.6; color: var(--text); margin-bottom: 8px; }
+.q-choices { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.q-open { font-style: italic; font-family: var(--font-sans); }
+
+/* RESULTS TABLE */
+.table-scroll { overflow-x: auto; margin-bottom: 16px; }
+.results-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 760px; }
+.results-table thead tr:first-child th { background: var(--navy); color: #fff; text-align: center; padding: 10px 8px; font-family: var(--font-serif); font-size: 0.88rem; }
+.results-table thead tr:first-child th:first-child { text-align: left; }
+.results-table thead tr:last-child th { background: var(--steel); color: rgba(255,255,255,0.65); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 7px 8px; text-align: center; }
+.results-table thead tr:last-child th:nth-child(3n) { border-right: 2px solid rgba(255,255,255,0.15); }
+.results-table tbody td { padding: 7px 10px; text-align: center; border-bottom: 1px solid var(--border); color: var(--text); }
+.results-table tbody td:first-child { text-align: left; font-weight: 500; }
+.results-table tbody tr:hover { background: var(--light); }
+.results-table .model-group-header td { background: var(--light); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--border); }
+.results-table .top-model td { background: #fdfbf0; }
+.results-table .best { background: var(--best); font-weight: 600; color: #1a5c30; }
+.results-table .degrade { background: var(--degrade); color: #8b1a1a; }
+.results-table .na-cell { color: var(--muted); font-style: italic; font-size: 0.75rem; }
+.delta { font-size: 0.7rem; font-weight: 700; color: #1a7a30; margin-left: 4px; }
+.delta.neg { color: #c0392b; }
+.selected-tag { display: inline-block; font-size: 0.65rem; background: var(--gold); color: var(--navy); border-radius: 3px; padding: 1px 5px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+.table-note { font-size: 0.78rem; color: var(--muted); margin-top: 10px; margin-bottom: 40px; }
+.legend-best { color: var(--best-border); font-size: 1rem; }
+.legend-degrade { color: var(--degrade-border); font-size: 1rem; }
+
+/* FINDINGS */
+.findings-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; margin-top: 8px; }
+.finding-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 20px 18px; }
+.finding-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.finding-card strong { display: block; font-size: 0.88rem; color: var(--navy); margin-bottom: 6px; }
+.finding-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+/* CORRELATION FIGURE */
+.corr-section { background: var(--light); border-radius: 12px; padding: 40px 36px; margin-top: 52px; }
+.corr-section h3 { font-family: var(--font-serif); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+.corr-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; line-height: 1.65; max-width: 780px; }
+.corr-fig-wrap { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+.corr-fig-wrap img { max-width: 540px; width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.corr-stats { display: flex; flex-direction: column; gap: 20px; min-width: 180px; }
+.corr-stat-item { border-left: 3px solid var(--accent); padding-left: 14px; }
+.corr-stat-num { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.corr-stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.corr-caption { font-size: 0.8rem; color: var(--muted); margin-top: 18px; font-style: italic; line-height: 1.6; }
+
+/* PHASES */
+.phases { display: flex; gap: 0; align-items: stretch; margin-bottom: 56px; }
+@media (max-width: 820px) { .phases { flex-direction: column; } .phase-arrow { transform: rotate(90deg); align-self: center; margin: 8px 0; } }
+.phase { flex: 1; background: var(--light); border: 1px solid var(--border); border-radius: 10px; padding: 28px 24px; }
+.phase--accent { background: #fff8e6; border-color: #e0c060; }
+.phase-arrow { display: flex; align-items: center; font-size: 1.5rem; color: var(--muted); padding: 0 10px; flex-shrink: 0; }
+.phase-num { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.phase h3 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.phase p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 16px; }
+.phase-detail { display: flex; flex-direction: column; gap: 8px; }
+.phase-item { font-size: 0.8rem; color: var(--text); padding: 8px 10px; background: rgba(255,255,255,0.7); border-radius: 5px; border-left: 3px solid var(--accent); line-height: 1.5; }
+
+/* DESIGN RESULTS */
+.design-results { background: var(--navy); border-radius: 12px; padding: 40px 36px; color: #fff; }
+.design-results h3 { font-family: var(--font-serif); font-size: 1.25rem; color: var(--gold); margin-bottom: 28px; }
+.design-stats-grid { display: flex; flex-wrap: wrap; margin-bottom: 24px; }
+.design-stat { flex: 1; min-width: 140px; text-align: center; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.1); }
+.design-stat:last-child { border-right: none; }
+.ds-num { display: block; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1.1; }
+.ds-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+.design-note { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* BIBTEX */
+.bibtex-wrap { position: relative; max-width: 720px; }
+.bibtex { background: #060f1a; border: 1px solid rgba(74,144,217,0.2); border-radius: 8px; padding: 28px; font-family: var(--font-mono); font-size: 0.82rem; color: #a8d4f5; line-height: 1.7; overflow-x: auto; white-space: pre; }
+.copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(74,144,217,0.15); border: 1px solid rgba(74,144,217,0.3); color: var(--accent); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; padding: 5px 14px; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+.copy-btn:hover { background: rgba(74,144,217,0.3); }
+
+/* FOOTER */
+.footer { background: #060f1a; padding: 40px 24px; text-align: center; }
+.footer p { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+.footer p strong { color: rgba(255,255,255,0.7); }
+.footer-links a { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+.footer-links a:hover { color: var(--gold); }
+.footer-small { font-size: 0.75rem !important; margin-top: 16px; }
+.footer-small a { color: rgba(255,255,255,0.3); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .stat-divider { display: none; }
+  .stat { padding: 12px 16px; width: 50%; }
+  .hero { padding-top: 48px; }
+  .design-stats-grid { flex-direction: column; }
+  .design-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .design-stat:last-child { border-bottom: none; }
+  .design-results { padding: 28px 20px; }
+  .phases { flex-direction: column; }
+  .corr-fig-wrap { flex-direction: column; }
+  .corr-fig-wrap img { max-width: 100%; }
+  .corr-section { padding: 28px 20px; }
+}
+
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+  </style>
 </head>
 <body>
+
+  <!-- CACAIE VENUE STRIP -->
+  <div class="venue-strip">
+    <div class="venue-strip-inner">
+      <span class="venue-strip-label">Published in</span>
+      <span class="venue-strip-name">Computer-Aided Civil and Infrastructure Engineering (CACAIE)</span>
+      <a href="https://www.sciencedirect.com/science/article/pii/S1093968726031129" target="_blank" rel="noopener" class="venue-strip-link">View Paper &#8594;</a>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -27,18 +262,18 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <header id="hero" class="hero">
     <div class="hero-inner">
-      <p class="venue-badge">University of Houston &nbsp;·&nbsp; Structures &amp; AI Lab</p>
+      <p class="venue-badge">University of Houston &nbsp;&middot;&nbsp; Structures &amp; AI Lab</p>
       <h1 class="paper-title">
         PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation Performance of Large Language Models on Exam Problems and Automated Component Design
       </h1>
 
       <div class="authors">
-        <a href="#" class="author">Saurav Silwal</a><sup>1</sup>,
-        <a href="https://joshgao.com" class="author">Joshua Gao</a><sup>2</sup>,
-        <a href="https://subinvarghese.com/" class="author">Subin Varghese</a><sup>2</sup>,
-        <a href="https://scholar.google.com/citations?user=f9M0CiIAAAAJ&hl=en" class="author">Vedhus Hoskere</a><sup>1,2*</sup>
+        <a href="https://scholar.google.com/citations?user=l9Fz74QAAAAJ&hl=en" class="author" target="_blank" rel="noopener">Saurav Silwal</a><sup>1</sup>,
+        <a href="https://joshgao.com" class="author" target="_blank" rel="noopener">Joshua Gao</a><sup>2</sup>,
+        <a href="https://subinvarghese.com/" class="author" target="_blank" rel="noopener">Subin Varghese</a><sup>2</sup>,
+        <a href="https://scholar.google.com/citations?user=f9M0CiIAAAAJ&hl=en" class="author" target="_blank" rel="noopener">Vedhus Hoskere</a><sup>1,2*</sup>
       </div>
       <div class="affiliations">
         <span><sup>1</sup>Dept. of Civil &amp; Environmental Engineering, University of Houston</span>
@@ -47,46 +282,30 @@
       </div>
 
       <div class="link-buttons">
-        <a href="#" class="btn btn-primary" id="btn-paper">
+        <a href="https://www.sciencedirect.com/science/article/pii/S1093968726031129" class="btn btn-primary" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
           Paper
         </a>
-        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation" class="btn btn-secondary">
+        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation" class="btn btn-secondary" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
           Code
         </a>
-        <a href="#" class="btn btn-secondary" id="btn-data">
+        <a href="https://huggingface.co/datasets/hoskerelab/PE_Civil_Bench" class="btn btn-secondary" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
           Data
         </a>
       </div>
 
-      <!-- Hero stat strip -->
       <div class="stat-strip">
-        <div class="stat">
-          <span class="stat-num">150</span>
-          <span class="stat-label">FE / PE Civil Questions</span>
-        </div>
+        <div class="stat"><span class="stat-num">150</span><span class="stat-label">FE / PE Civil Questions</span></div>
         <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">13</span>
-          <span class="stat-label">LLMs Evaluated</span>
-        </div>
+        <div class="stat"><span class="stat-num">13</span><span class="stat-label">LLMs Evaluated</span></div>
         <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">33</span>
-          <span class="stat-label">RC Beam Designs</span>
-        </div>
+        <div class="stat"><span class="stat-num">33</span><span class="stat-label">RC Beam Designs</span></div>
         <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">r ≥ 0.90</span>
-          <span class="stat-label">Agreement with ETABS</span>
-        </div>
+        <div class="stat"><span class="stat-num">r &ge; 0.90</span><span class="stat-label">Agreement with ETABS</span></div>
         <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">&lt;$2</span>
-          <span class="stat-label">Cost per Design Run</span>
-        </div>
+        <div class="stat"><span class="stat-num">&lt;$2</span><span class="stat-label">Cost per Design Run</span></div>
       </div>
     </div>
   </header>
@@ -99,7 +318,7 @@
         Large language models are increasingly being piloted in civil engineering firms to automate workflows and help engineers navigate dense design codes and specifications. However, safety-critical use remains limited by reliability concerns, inconsistent reasoning, and the need for auditable, code-grounded outputs suitable for quality control. While retrieval augmentation and agentic workflows have improved factuality in other domains, their effectiveness in civil engineering has not been systematically established, and it remains unclear how to scale them into transparent, code-compliant design pipelines with reliable evaluation.
       </p>
       <p class="abstract-text">
-        To address these limitations, we develop the first benchmark, <strong>PE Civil Bench</strong>, consisting of Fundamentals of Engineering and Professional Engineering Civil examination questions and produce baseline scores of thirteen frontier and open-weight large language models, including the state-of-the-art GPT-5.5, under baseline prompting, conventional retrieval-augmented generation (RAG), and agentic RAG. We then develop a retrieval-augmented multi-agent framework for fully automated concrete element design, demonstrated on reinforced concrete beams and columns, that infers design steps from worked examples and performs code retrieval, calculation, validation, and iterative self-correction with transparent traces. Across 33 beam configurations it produced code-compliant designs in all cases and closely matched ETABS finite-element outputs (r&nbsp;≥&nbsp;0.90). Requiring only a new reference example and no reprogramming, the same architecture extended to column design. Finally, we introduce an autonomous RAG-based evaluator that extracts assessment criteria from reference solutions and agrees strongly with a traditional rule-based scorer (r&nbsp;=&nbsp;0.976).
+        To address these limitations, we develop the first benchmark, <strong>PE Civil Bench</strong>, consisting of Fundamentals of Engineering and Professional Engineering Civil examination questions and produce baseline scores of thirteen frontier and open-weight large language models, including the state-of-the-art GPT-5.5, under baseline prompting, conventional retrieval-augmented generation (RAG), and agentic RAG. We then develop a retrieval-augmented multi-agent framework for fully automated concrete element design, demonstrated on reinforced concrete beams and columns, that infers design steps from worked examples and performs code retrieval, calculation, validation, and iterative self-correction with transparent traces. Across 33 beam configurations it produced code-compliant designs in all cases and closely matched ETABS finite-element outputs (r&nbsp;&ge;&nbsp;0.90). Requiring only a new reference example and no reprogramming, the same architecture extended to column design. Finally, we introduce an autonomous RAG-based evaluator that extracts assessment criteria from reference solutions and agrees strongly with a traditional rule-based scorer (r&nbsp;=&nbsp;0.976).
       </p>
     </div>
   </section>
@@ -112,11 +331,11 @@
 
         <div class="contrib-card">
           <div class="contrib-icon">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="4" width="36" height="40" rx="3" fill="#1a3a5c" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="16" x2="34" y2="16" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="23" x2="34" y2="23" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="30" x2="26" y2="30" stroke="#4a90d9" stroke-width="2"/><circle cx="38" cy="38" r="8" fill="#4a90d9"/><text x="38" y="42" text-anchor="middle" fill="white" font-size="10" font-weight="bold">✓</text></svg>
+            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="4" width="36" height="40" rx="3" fill="#1a3a5c" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="16" x2="34" y2="16" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="23" x2="34" y2="23" stroke="#4a90d9" stroke-width="2"/><line x1="14" y1="30" x2="26" y2="30" stroke="#4a90d9" stroke-width="2"/><circle cx="38" cy="38" r="8" fill="#4a90d9"/><text x="38" y="42" text-anchor="middle" fill="white" font-size="10" font-weight="bold">&#10003;</text></svg>
           </div>
           <div class="contrib-num">01</div>
           <h3>PE Civil Bench</h3>
-          <p>The first open benchmark of 150 FE- and PE-style civil engineering problems spanning 8 subdisciplines, 3 difficulty tiers, and multiple question types — enabling systematic evaluation of base, RAG-augmented, and agentic LLMs.</p>
+          <p>The first open benchmark of 150 FE- and PE-style civil engineering problems spanning 8 subdisciplines, 3 difficulty tiers, and multiple question types &mdash; enabling systematic evaluation of base, RAG-augmented, and agentic LLMs.</p>
           <ul class="contrib-facts">
             <li>110 MCQ (FE-style) + 40 open-ended numerical (PE-style)</li>
             <li>Structural, geotechnical, water resources, transportation &amp; more</li>
@@ -130,7 +349,7 @@
           </div>
           <div class="contrib-num">02</div>
           <h3>Agentic Design Pipeline</h3>
-          <p>A self-correcting multi-agent framework for fully automated, code-compliant structural design. Design logic is inferred dynamically from reference examples — no hard-coded rules, no reprogramming when codes change.</p>
+          <p>A self-correcting multi-agent framework for fully automated, code-compliant structural design. Design logic is inferred dynamically from reference examples &mdash; no hard-coded rules, no reprogramming when codes change.</p>
           <ul class="contrib-facts">
             <li>100% code-compliant across 33 RC beam configurations</li>
             <li>Extends to column design with only a new reference example</li>
@@ -144,10 +363,10 @@
           </div>
           <div class="contrib-num">03</div>
           <h3>RAG-Based Evaluator</h3>
-          <p>An autonomous evaluation framework that extracts assessment criteria from retrieved reference solutions and verifies design accuracy without manual rubric construction — scaling quality control alongside the design pipeline.</p>
+          <p>An autonomous evaluation framework that extracts assessment criteria from retrieved reference solutions and verifies design accuracy without manual rubric construction &mdash; scaling quality control alongside the design pipeline.</p>
           <ul class="contrib-facts">
             <li>r = 0.976 agreement with traditional hardcoded scorer</li>
-            <li>R² = 0.953 across 66 RC beam designs</li>
+            <li>R&sup2; = 0.953 across 66 RC beam designs</li>
             <li>Learns criteria from examples, not hand-coded rules</li>
           </ul>
         </div>
@@ -194,30 +413,27 @@
 
         <div class="sample-questions">
           <h3>Sample Questions</h3>
-
           <div class="sample-q easy">
-            <div class="q-badge">EASY &nbsp;·&nbsp; FE-Style MCQ &nbsp;·&nbsp; Structural</div>
+            <div class="q-badge">EASY &nbsp;&middot;&nbsp; FE-Style MCQ &nbsp;&middot;&nbsp; Structural</div>
             <p class="q-text">The elastic modulus of concrete with f'c = 3 ksi and a unit weight of 145 pcf is almost nearly:</p>
             <p class="q-choices">A. 3,155 ksi &nbsp;&nbsp; B. 3,834 ksi &nbsp;&nbsp; C. 3,484 ksi &nbsp;&nbsp; D. 3,562 ksi</p>
           </div>
-
           <div class="sample-q medium">
-            <div class="q-badge">MEDIUM &nbsp;·&nbsp; FE-Style MCQ &nbsp;·&nbsp; Geotechnical</div>
+            <div class="q-badge">MEDIUM &nbsp;&middot;&nbsp; FE-Style MCQ &nbsp;&middot;&nbsp; Geotechnical</div>
             <p class="q-text">A sand sample was tested in a triaxial device. At the beginning of the test, a confining pressure of 50 psi was applied, and deviatoric pressure was then applied. The sample failed when the applied external pressure reached 320 psi. The angle of internal friction of the sand is most nearly:</p>
-            <p class="q-choices">A. 32° &nbsp;&nbsp; B. 37° &nbsp;&nbsp; C. 43° &nbsp;&nbsp; D. 47°</p>
+            <p class="q-choices">A. 32&deg; &nbsp;&nbsp; B. 37&deg; &nbsp;&nbsp; C. 43&deg; &nbsp;&nbsp; D. 47&deg;</p>
           </div>
-
           <div class="sample-q hard">
-            <div class="q-badge">HARD &nbsp;·&nbsp; PE-Style Open-Ended &nbsp;·&nbsp; Transportation</div>
+            <div class="q-badge">HARD &nbsp;&middot;&nbsp; PE-Style Open-Ended &nbsp;&middot;&nbsp; Transportation</div>
             <p class="q-text">Consider a four-legged intersection with a single lane for each approach. The intersection is currently signalized with simple two-phase actuated control and a 50-second phase duration for the northbound/southbound approaches, with 4-second change and 1.5-second clearance intervals. The southbound approach has a saturation flow rate of 1,615 vehicles per hour and a queue of 14 vehicles. Assuming a green extension time of 4.5 seconds, the arrival flow rate during the effective green time for the southbound approach is most nearly:</p>
-            <p class="q-choices q-open"><em>Note: Numerical answer required — no answer choices provided.</em></p>
+            <p class="q-choices q-open"><em>Note: Numerical answer required &mdash; no answer choices provided.</em></p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESULTS TABLE -->
+  <!-- RESULTS -->
   <section id="results" class="section section-ruled">
     <div class="container">
       <h2 class="section-title">Benchmark Results</h2>
@@ -268,20 +484,20 @@
               <td>Gemini 2.5 Pro</td>
               <td>63.0%</td><td>12.5%</td><td>49.3%</td>
               <td>73.0%</td><td>32.5%</td><td>57.3%</td>
-              <td class="best">93.6%</td><td class="best">35.0%</td><td class="best gain">78.0% <span class="delta">+28.7pp</span></td>
+              <td class="best">93.6%</td><td class="best">35.0%</td><td class="best">78.0% <span class="delta">+28.7pp</span></td>
             </tr>
             <tr>
               <td>DeepSeek R1 7B</td>
               <td>40.0%</td><td>0.0%</td><td>29.3%</td>
               <td>39.0%</td><td>0.0%</td><td>28.7%</td>
-              <td colspan="3" class="na-cell">† No tool-calling support</td>
+              <td colspan="3" class="na-cell">&#8224; No tool-calling support</td>
             </tr>
             <tr class="model-group-header"><td colspan="10">General-Purpose Flagship Models</td></tr>
             <tr>
-              <td>GPT-4o <span class="selected-tag">★ selected</span></td>
+              <td>GPT-4o <span class="selected-tag">&#9733; selected</span></td>
               <td>66.3%</td><td>2.5%</td><td>49.3%</td>
               <td>71.7%</td><td>25.0%</td><td>59.3%</td>
-              <td class="best">86.4%</td><td class="best">27.5%</td><td class="best gain">70.7% <span class="delta">+21.4pp</span></td>
+              <td class="best">86.4%</td><td class="best">27.5%</td><td class="best">70.7% <span class="delta">+21.4pp</span></td>
             </tr>
             <tr>
               <td>GPT-4o-mini</td>
@@ -311,43 +527,72 @@
             <tr>
               <td>Mistral 7B</td>
               <td>40.0%</td><td>0.0%</td><td>29.3%</td>
-              <td class="degrade">32.0%</td><td class="degrade">0.0%</td><td class="degrade">23.3% <span class="delta neg">−6.0pp</span></td>
+              <td class="degrade">32.0%</td><td class="degrade">0.0%</td><td class="degrade">23.3% <span class="delta neg">&minus;6.0pp</span></td>
               <td class="best">43.0%</td><td class="best">2.5%</td><td class="best">32.0%</td>
             </tr>
             <tr>
               <td>Gemma2 9B</td>
               <td>29.0%</td><td>0.0%</td><td>21.3%</td>
               <td>32.0%</td><td>5.0%</td><td>24.7%</td>
-              <td colspan="3" class="na-cell">† No tool-calling support</td>
+              <td colspan="3" class="na-cell">&#8224; No tool-calling support</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="table-note">† DeepSeek R1 7B and Gemma2 9B do not support tool calling and could not be evaluated under Agentic RAG. MCQ = Multiple Choice Questions (n=110); OE = Open-Ended numerical (n=40). <span class="legend-best">■</span> Best per model &nbsp; <span class="legend-degrade">■</span> Degraded vs. baseline</p>
+      <p class="table-note">&#8224; DeepSeek R1 7B and Gemma2 9B do not support tool calling and could not be evaluated under Agentic RAG. MCQ = Multiple Choice (n=110); OE = Open-Ended numerical (n=40). <span class="legend-best">&#9632;</span> Best per model &nbsp; <span class="legend-degrade">&#9632;</span> Degraded vs. baseline</p>
 
-      <!-- Key findings callouts -->
       <div class="findings-row">
         <div class="finding-card">
-          <div class="finding-icon">📈</div>
+          <div class="finding-icon">&#128200;</div>
           <strong>Agentic RAG: zero degradations</strong>
           <p>Unlike Vector RAG (which hurt Mistral by 6pp and Llama 3.3 70B by 2.7pp), Agentic RAG improved every evaluable model.</p>
         </div>
         <div class="finding-card">
-          <div class="finding-icon">🚀</div>
+          <div class="finding-icon">&#128640;</div>
           <strong>Biggest jump: Gemini 2.5 Pro</strong>
-          <p>+28.7 percentage points with Agentic RAG (49.3% → 78.0%), the largest gain among all models evaluated.</p>
+          <p>+28.7 percentage points with Agentic RAG (49.3% &rarr; 78.0%), the largest gain among all models evaluated.</p>
         </div>
         <div class="finding-card">
-          <div class="finding-icon">⚙️</div>
+          <div class="finding-icon">&#9881;&#65039;</div>
           <strong>Iterative retrieval is the key</strong>
-          <p>Ablation shows removing multi-turn retrieval causes the largest drops: −8.7pp for Gemini, −16.0pp for GPT-4o.</p>
+          <p>Ablation shows removing multi-turn retrieval causes the largest drops: &minus;8.7pp for Gemini, &minus;16.0pp for GPT-4o.</p>
         </div>
         <div class="finding-card">
-          <div class="finding-icon">🎯</div>
+          <div class="finding-icon">&#127919;</div>
           <strong>Residual bottleneck: grounding</strong>
-          <p>After augmentation, 68.6% of remaining failures are grounding or conceptual errors — selecting the right principle, not computing it.</p>
+          <p>After augmentation, 68.6% of remaining failures are grounding or conceptual errors &mdash; selecting the right principle, not computing it.</p>
         </div>
       </div>
+
+      <!-- CORRELATION FIGURE -->
+      <div class="corr-section reveal">
+        <h3>Evaluator Correlation: RAG-Based vs. Hardcoded Scoring</h3>
+        <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction.</p>
+        <div class="corr-fig-wrap">
+          <img src="Figure_12.png"
+               alt="Scatter plot showing correlation between RAG-based and hardcoded evaluation scores for 66 RC beam designs. Green points (Regular Beam Design) cluster in the upper right; red points (Ablated Pipeline Design) cluster in the lower left. Pearson r = 0.976, R-squared = 0.953, RMSE = 4.69." />
+          <div class="corr-stats">
+            <div class="corr-stat-item">
+              <div class="corr-stat-num">r = 0.976</div>
+              <div class="corr-stat-label">Pearson correlation between RAG evaluator and hardcoded scorer</div>
+            </div>
+            <div class="corr-stat-item">
+              <div class="corr-stat-num">R&sup2; = 0.953</div>
+              <div class="corr-stat-label">Variance in RAG scores explained by hardcoded scores</div>
+            </div>
+            <div class="corr-stat-item">
+              <div class="corr-stat-num">RMSE = 4.69</div>
+              <div class="corr-stat-label">Average score deviation &mdash; under 8% of the 36&ndash;98 point range</div>
+            </div>
+            <div class="corr-stat-item">
+              <div class="corr-stat-num">66</div>
+              <div class="corr-stat-label">RC beam designs evaluated (33 full pipeline + 33 ablated)</div>
+            </div>
+          </div>
+        </div>
+        <p class="corr-caption">Figure 12: Correlation between RAG-based and hardcoded evaluation scores for RC beam designs. Green markers = full agentic pipeline (Regular Beam Design); red markers = ablated pipeline (no RAG retrieval). The two populations separate cleanly across both evaluation methods, confirming the RAG evaluator captures design quality with the same fidelity as traditional rubrics.</p>
+      </div>
+
     </div>
   </section>
 
@@ -355,80 +600,52 @@
   <section id="design" class="section section-light">
     <div class="container">
       <h2 class="section-title">Three-Phase Methodology</h2>
-      <p class="section-sub">From strategy benchmarking through automated design to quality verification — a unified pipeline for AI-assisted civil engineering.</p>
+      <p class="section-sub">From strategy benchmarking through automated design to quality verification &mdash; a unified pipeline for AI-assisted civil engineering.</p>
 
       <div class="phases">
-
         <div class="phase">
           <div class="phase-num">Phase 1</div>
           <h3>Systematic Benchmarking</h3>
-          <p>Three augmentation strategies of increasing sophistication — Base LLM, Vector RAG, and Agentic RAG — are evaluated on PE Civil Bench using LangChain with consistent hyperparameters across all 13 models.</p>
+          <p>Three augmentation strategies of increasing sophistication &mdash; Base LLM, Vector RAG, and Agentic RAG &mdash; are evaluated on PE Civil Bench using LangChain with consistent hyperparameters across all 13 models.</p>
           <div class="phase-detail">
-            <div class="phase-item">
-              <strong>Base LLM</strong> — intrinsic reasoning, no retrieval
-            </div>
-            <div class="phase-item">
-              <strong>Vector RAG</strong> — single-pass semantic retrieval from the FE Reference Handbook
-            </div>
-            <div class="phase-item">
-              <strong>Agentic RAG</strong> — iterative retrieval loop with formula injection and self-reflection (ReAct-inspired, LangGraph)
-            </div>
+            <div class="phase-item"><strong>Base LLM</strong> &mdash; intrinsic reasoning, no retrieval</div>
+            <div class="phase-item"><strong>Vector RAG</strong> &mdash; single-pass semantic retrieval from the FE Reference Handbook</div>
+            <div class="phase-item"><strong>Agentic RAG</strong> &mdash; iterative retrieval loop with formula injection and self-reflection (ReAct-inspired, LangGraph)</div>
           </div>
         </div>
-
-        <div class="phase-arrow">→</div>
-
+        <div class="phase-arrow">&rarr;</div>
         <div class="phase phase--accent">
           <div class="phase-num">Phase 2</div>
           <h3>Agentic Design Generation</h3>
-          <p>The best-performing strategy drives a self-correcting multi-agent framework for code-compliant structural design. Design logic is inferred dynamically — no hard-coded procedures.</p>
+          <p>The best-performing strategy drives a self-correcting multi-agent framework for code-compliant structural design. Design logic is inferred dynamically &mdash; no hard-coded procedures.</p>
           <div class="phase-detail">
-            <div class="phase-item"><strong>Planner</strong> — extracts design steps from reference examples</div>
-            <div class="phase-item"><strong>Executor</strong> — agentic RAG retrieval + Python REPL for calculations</div>
-            <div class="phase-item"><strong>Validator</strong> — hierarchical error detection (local fix or full restart)</div>
-            <div class="phase-item"><strong>Report Generator</strong> — traceable, auditable output with ACI 318 references</div>
+            <div class="phase-item"><strong>Planner</strong> &mdash; extracts design steps from reference examples</div>
+            <div class="phase-item"><strong>Executor</strong> &mdash; agentic RAG retrieval + Python REPL for calculations</div>
+            <div class="phase-item"><strong>Validator</strong> &mdash; hierarchical error detection (local fix or full restart)</div>
+            <div class="phase-item"><strong>Report Generator</strong> &mdash; traceable, auditable output with ACI 318 references</div>
           </div>
         </div>
-
-        <div class="phase-arrow">→</div>
-
+        <div class="phase-arrow">&rarr;</div>
         <div class="phase">
           <div class="phase-num">Phase 3</div>
           <h3>Autonomous Evaluation</h3>
           <p>A RAG-based evaluation framework learns assessment criteria from reference solutions and scores designs without manual rubric construction.</p>
           <div class="phase-detail">
-            <div class="phase-item"><strong>Retriever</strong> — finds relevant reference designs by semantic search</div>
-            <div class="phase-item"><strong>Rubric Generator</strong> — extracts methodology and converts to scoring criteria</div>
-            <div class="phase-item"><strong>Evaluator</strong> — LLM-based agent assigns weighted scores with justifications</div>
+            <div class="phase-item"><strong>Retriever</strong> &mdash; finds relevant reference designs by semantic search</div>
+            <div class="phase-item"><strong>Rubric Generator</strong> &mdash; extracts methodology and converts to scoring criteria</div>
+            <div class="phase-item"><strong>Evaluator</strong> &mdash; LLM-based agent assigns weighted scores with justifications</div>
           </div>
         </div>
-
       </div>
 
-      <!-- Design results stats -->
       <div class="design-results">
         <h3>Automated RC Beam Design Results</h3>
         <div class="design-stats-grid">
-          <div class="design-stat">
-            <span class="ds-num">33/33</span>
-            <span class="ds-label">Code-compliant designs</span>
-          </div>
-          <div class="design-stat">
-            <span class="ds-num">r = 0.99</span>
-            <span class="ds-label">Moment &amp; shear vs ETABS</span>
-          </div>
-          <div class="design-stat">
-            <span class="ds-num">r = 0.976</span>
-            <span class="ds-label">RAG vs hardcoded evaluator</span>
-          </div>
-          <div class="design-stat">
-            <span class="ds-num">&lt;$2</span>
-            <span class="ds-label">Per beam design (GPT-4o)</span>
-          </div>
-          <div class="design-stat">
-            <span class="ds-num">0 changes</span>
-            <span class="ds-label">To extend to column design</span>
-          </div>
+          <div class="design-stat"><span class="ds-num">33/33</span><span class="ds-label">Code-compliant designs</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.99</span><span class="ds-label">Moment &amp; shear vs ETABS</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.976</span><span class="ds-label">RAG vs hardcoded evaluator</span></div>
+          <div class="design-stat"><span class="ds-num">&lt;$2</span><span class="ds-label">Per beam design (GPT-4o)</span></div>
+          <div class="design-stat"><span class="ds-num">0 changes</span><span class="ds-label">To extend to column design</span></div>
         </div>
         <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
       </div>
@@ -447,8 +664,9 @@
              Automated Component Design},
   author  = {Silwal, Saurav and Gao, Joshua and Varghese, Subin
              and Hoskere, Vedhus},
+  journal = {Computer-Aided Civil and Infrastructure Engineering},
   year    = {2025},
-  url     = {https://huggingface.co/datasets/hoskerelab/PE_Civil_Bench}
+  url     = {https://www.sciencedirect.com/science/article/pii/S1093968726031129}
 }</pre>
       </div>
     </div>
@@ -457,22 +675,66 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>
-        <strong>Structures &amp; Artificial Intelligence Lab</strong> &nbsp;·&nbsp; University of Houston
-      </p>
-      <p>
-        Supported by the Center for Visual Structural Expertise for Resilience (C-ViSER) at UH.
-      </p>
+      <p><strong>Structures &amp; Artificial Intelligence Lab</strong> &nbsp;&middot;&nbsp; University of Houston</p>
+      <p>Published in <strong>Computer-Aided Civil and Infrastructure Engineering (CACAIE)</strong></p>
+      <p>Supported by the Center for Visual Structural Expertise for Resilience (C-ViSER) at UH.</p>
       <p class="footer-links">
-        <a href="#">Paper</a> &nbsp;·&nbsp;
-        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation">Code</a> &nbsp;·&nbsp;
-        <a href="#">Data</a> &nbsp;·&nbsp;
-        <a href="https://drags99.github.io/bridge-eqa/">Related Work: BridgeEQA</a>
+        <a href="https://www.sciencedirect.com/science/article/pii/S1093968726031129" target="_blank" rel="noopener">Paper</a> &nbsp;&middot;&nbsp;
+        <a href="https://github.com/komal-blkmmb/Benchmarking_agentic-design_and_evaluation" target="_blank" rel="noopener">Code</a> &nbsp;&middot;&nbsp;
+        <a href="https://huggingface.co/datasets/hoskerelab/PE_Civil_Bench" target="_blank" rel="noopener">Data</a> &nbsp;&middot;&nbsp;
+        <a href="https://drags99.github.io/bridge-eqa/" target="_blank" rel="noopener">Related Work: BridgeEQA</a>
       </p>
-      <p class="footer-small">Website template inspired by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.</p>
+      <p class="footer-small">Website template inspired by <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.</p>
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script>
+// Scroll Reveal
+const revealEls = document.querySelectorAll('.contrib-card, .finding-card, .phase, .sample-q, .design-stat, .stat, .corr-section');
+revealEls.forEach(el => el.classList.add('reveal'));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const siblings = [...entry.target.parentElement.children];
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id], header[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => navObserver.observe(s));
+
+// Copy BibTeX
+function copyBibtex() {
+  const text = document.getElementById('bibtex-block').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.color = '#3a9e5c';
+    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+  });
+}
+
+// Navbar border on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.style.borderBottomColor = window.scrollY > 60 ? 'rgba(74,144,217,0.35)' : 'rgba(74,144,217,0.2)';
+}, { passive: true });
+  </script>
 </body>
 </html>
