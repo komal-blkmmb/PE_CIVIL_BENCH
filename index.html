@@ -53,13 +53,14 @@ sup { font-size: 0.65em; vertical-align: super; }
 /* HERO */
 .hero { background: linear-gradient(160deg, var(--navy) 0%, var(--steel) 100%); padding: 72px 24px 0; text-align: center; }
 .hero-inner { max-width: 860px; margin: 0 auto; }
-.venue-badge { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
 .paper-title { font-family: var(--font-serif); font-size: clamp(1.55rem,4vw,2.25rem); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 28px; letter-spacing: -0.01em; }
 .authors { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
 .author { color: #a8d4f5; font-weight: 500; }
 .author:hover { color: var(--gold); text-decoration: underline; }
-.affiliations { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+.affiliations { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 20px; }
 .affiliations a { color: rgba(255,255,255,0.65); }
+.published-in { font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 32px; letter-spacing: 0.01em; }
+.published-in em { color: var(--gold); font-style: normal; font-weight: 600; }
 
 /* BUTTONS */
 .link-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
@@ -156,7 +157,7 @@ sup { font-size: 0.65em; vertical-align: super; }
 .corr-section h3 { font-family: var(--font-serif); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
 .corr-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; line-height: 1.65; max-width: 780px; }
 .corr-fig-wrap { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
-.corr-fig-wrap img { max-width: 540px; width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.corr-fig-wrap img { max-width: 540px; width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.08); display: block; }
 .corr-stats { display: flex; flex-direction: column; gap: 20px; min-width: 180px; }
 .corr-stat-item { border-left: 3px solid var(--accent); padding-left: 14px; }
 .corr-stat-num { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--navy); line-height: 1; }
@@ -199,6 +200,10 @@ sup { font-size: 0.65em; vertical-align: super; }
 .footer-links a:hover { color: var(--gold); }
 .footer-small { font-size: 0.75rem !important; margin-top: 16px; }
 .footer-small a { color: rgba(255,255,255,0.3); }
+.footer-lab { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-lab a { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
+.footer-lab a:hover { opacity: 0.8; text-decoration: none; }
+.footer-lab span { font-size: 0.75rem; color: rgba(255,255,255,0.35); display: block; margin-top: 4px; }
 
 /* RESPONSIVE */
 @media (max-width: 640px) {
@@ -233,9 +238,9 @@ sup { font-size: 0.65em; vertical-align: super; }
       <ul class="nav-links">
         <li><a href="#abstract">Abstract</a></li>
         <li><a href="#contributions">Contributions</a></li>
+        <li><a href="#design">Methodology</a></li>
         <li><a href="#benchmark">Benchmark</a></li>
         <li><a href="#results">Results</a></li>
-        <li><a href="#design">Design Pipeline</a></li>
         <li><a href="#bibtex">BibTeX</a></li>
       </ul>
     </div>
@@ -244,7 +249,6 @@ sup { font-size: 0.65em; vertical-align: super; }
   <!-- HERO -->
   <header id="hero" class="hero">
     <div class="hero-inner">
-      <p class="venue-badge">Computer-Aided Civil and Infrastructure Engineering &nbsp;&middot;&nbsp; University of Houston &nbsp;&middot;&nbsp; Structures &amp; AI Lab</p>
       <h1 class="paper-title">
         PE Civil Bench: Advancing Agentic Retrieval-Augmented Generation Performance of Large Language Models on Exam Problems and Automated Component Design
       </h1>
@@ -260,6 +264,7 @@ sup { font-size: 0.65em; vertical-align: super; }
         <span><sup>2</sup>Dept. of Electrical &amp; Computer Engineering, University of Houston</span>
         <span><sup>*</sup>Corresponding author: <a href="mailto:vhoskere@Central.UH.EDU">vhoskere@Central.UH.EDU</a></span>
       </div>
+      <p class="published-in">Published in <em>Computer-Aided Civil and Infrastructure Engineering</em></p>
 
       <div class="link-buttons">
         <a href="https://www.sciencedirect.com/science/article/pii/S1093968726031129" class="btn btn-primary" target="_blank" rel="noopener">
@@ -355,8 +360,64 @@ sup { font-size: 0.65em; vertical-align: super; }
     </div>
   </section>
 
+  <!-- THREE-PHASE METHODOLOGY -->
+  <section id="design" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Three-Phase Methodology</h2>
+      <p class="section-sub">From strategy benchmarking through automated design to quality verification &mdash; a unified pipeline for AI-assisted civil engineering.</p>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-num">Phase 1</div>
+          <h3>Systematic Benchmarking</h3>
+          <p>Three augmentation strategies of increasing sophistication &mdash; Base LLM, Vector RAG, and Agentic RAG &mdash; are evaluated on PE Civil Bench using LangChain with consistent hyperparameters across all 13 models.</p>
+          <div class="phase-detail">
+            <div class="phase-item"><strong>Base LLM</strong> &mdash; intrinsic reasoning, no retrieval</div>
+            <div class="phase-item"><strong>Vector RAG</strong> &mdash; single-pass semantic retrieval from the FE Reference Handbook</div>
+            <div class="phase-item"><strong>Agentic RAG</strong> &mdash; iterative retrieval loop with formula injection and self-reflection (ReAct-inspired, LangGraph)</div>
+          </div>
+        </div>
+        <div class="phase-arrow">&rarr;</div>
+        <div class="phase phase--accent">
+          <div class="phase-num">Phase 2</div>
+          <h3>Agentic Design Generation</h3>
+          <p>The best-performing strategy drives a self-correcting multi-agent framework for code-compliant structural design. Design logic is inferred dynamically &mdash; no hard-coded procedures.</p>
+          <div class="phase-detail">
+            <div class="phase-item"><strong>Planner</strong> &mdash; extracts design steps from reference examples</div>
+            <div class="phase-item"><strong>Executor</strong> &mdash; agentic RAG retrieval + Python REPL for calculations</div>
+            <div class="phase-item"><strong>Validator</strong> &mdash; hierarchical error detection (local fix or full restart)</div>
+            <div class="phase-item"><strong>Report Generator</strong> &mdash; traceable, auditable output with ACI 318 references</div>
+          </div>
+        </div>
+        <div class="phase-arrow">&rarr;</div>
+        <div class="phase">
+          <div class="phase-num">Phase 3</div>
+          <h3>Autonomous Evaluation</h3>
+          <p>A RAG-based evaluation framework learns assessment criteria from reference solutions and scores designs without manual rubric construction.</p>
+          <div class="phase-detail">
+            <div class="phase-item"><strong>Retriever</strong> &mdash; finds relevant reference designs by semantic search</div>
+            <div class="phase-item"><strong>Rubric Generator</strong> &mdash; extracts methodology and converts to scoring criteria</div>
+            <div class="phase-item"><strong>Evaluator</strong> &mdash; LLM-based agent assigns weighted scores with justifications</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-results">
+        <h3>Automated RC Beam Design Results</h3>
+        <div class="design-stats-grid">
+          <div class="design-stat"><span class="ds-num">33/33</span><span class="ds-label">Code-compliant designs</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.99</span><span class="ds-label">Moment &amp; shear vs ETABS</span></div>
+          <div class="design-stat"><span class="ds-num">r = 0.976</span><span class="ds-label">RAG vs hardcoded evaluator</span></div>
+          <div class="design-stat"><span class="ds-num">&lt;$2</span><span class="ds-label">Per beam design (GPT-4o)</span></div>
+          <div class="design-stat"><span class="ds-num">0 changes</span><span class="ds-label">To extend to column design</span></div>
+        </div>
+        <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- BENCHMARK COMPOSITION -->
-  <section id="benchmark" class="section section-light">
+  <section id="benchmark" class="section section-ruled">
     <div class="container">
       <h2 class="section-title">PE Civil Bench Composition</h2>
       <p class="section-sub">150 problems curated by professional engineers at the Structures and AI Lab, University of Houston, covering all major FE/PE Civil subdisciplines.</p>
@@ -414,7 +475,7 @@ sup { font-size: 0.65em; vertical-align: super; }
   </section>
 
   <!-- RESULTS -->
-  <section id="results" class="section section-ruled">
+  <section id="results" class="section section-light">
     <div class="container">
       <h2 class="section-title">Benchmark Results</h2>
       <p class="section-sub">Overall accuracy across 13 LLMs under three augmentation strategies on PE Civil Bench (N = 150). Agentic RAG improved every evaluable model with no degradations.</p>
@@ -549,7 +610,7 @@ sup { font-size: 0.65em; vertical-align: super; }
         <h3>Evaluator Correlation: RAG-Based vs. Hardcoded Scoring</h3>
         <p class="corr-sub">The autonomous RAG-based evaluator was validated against a traditional hardcoded scoring script across 66 RC beam designs (33 full-pipeline + 33 ablated without RAG). The near-perfect agreement confirms that retrieval-augmented evaluation can recover the expert judgment embedded in hand-crafted rubrics &mdash; without any manual rule construction.</p>
         <div class="corr-fig-wrap">
-          <img src="Figure%2012.png"
+          <img src="Figure%20_12.png"
                alt="Scatter plot showing correlation between RAG-based and hardcoded evaluation scores for 66 RC beam designs. Green points (Regular Beam Design) cluster in the upper right; red points (Ablated Pipeline Design) cluster in the lower left. Pearson r = 0.976, R-squared = 0.953, RMSE = 4.69." />
           <div class="corr-stats">
             <div class="corr-stat-item">
@@ -576,62 +637,6 @@ sup { font-size: 0.65em; vertical-align: super; }
     </div>
   </section>
 
-  <!-- DESIGN PIPELINE -->
-  <section id="design" class="section section-light">
-    <div class="container">
-      <h2 class="section-title">Three-Phase Methodology</h2>
-      <p class="section-sub">From strategy benchmarking through automated design to quality verification &mdash; a unified pipeline for AI-assisted civil engineering.</p>
-
-      <div class="phases">
-        <div class="phase">
-          <div class="phase-num">Phase 1</div>
-          <h3>Systematic Benchmarking</h3>
-          <p>Three augmentation strategies of increasing sophistication &mdash; Base LLM, Vector RAG, and Agentic RAG &mdash; are evaluated on PE Civil Bench using LangChain with consistent hyperparameters across all 13 models.</p>
-          <div class="phase-detail">
-            <div class="phase-item"><strong>Base LLM</strong> &mdash; intrinsic reasoning, no retrieval</div>
-            <div class="phase-item"><strong>Vector RAG</strong> &mdash; single-pass semantic retrieval from the FE Reference Handbook</div>
-            <div class="phase-item"><strong>Agentic RAG</strong> &mdash; iterative retrieval loop with formula injection and self-reflection (ReAct-inspired, LangGraph)</div>
-          </div>
-        </div>
-        <div class="phase-arrow">&rarr;</div>
-        <div class="phase phase--accent">
-          <div class="phase-num">Phase 2</div>
-          <h3>Agentic Design Generation</h3>
-          <p>The best-performing strategy drives a self-correcting multi-agent framework for code-compliant structural design. Design logic is inferred dynamically &mdash; no hard-coded procedures.</p>
-          <div class="phase-detail">
-            <div class="phase-item"><strong>Planner</strong> &mdash; extracts design steps from reference examples</div>
-            <div class="phase-item"><strong>Executor</strong> &mdash; agentic RAG retrieval + Python REPL for calculations</div>
-            <div class="phase-item"><strong>Validator</strong> &mdash; hierarchical error detection (local fix or full restart)</div>
-            <div class="phase-item"><strong>Report Generator</strong> &mdash; traceable, auditable output with ACI 318 references</div>
-          </div>
-        </div>
-        <div class="phase-arrow">&rarr;</div>
-        <div class="phase">
-          <div class="phase-num">Phase 3</div>
-          <h3>Autonomous Evaluation</h3>
-          <p>A RAG-based evaluation framework learns assessment criteria from reference solutions and scores designs without manual rubric construction.</p>
-          <div class="phase-detail">
-            <div class="phase-item"><strong>Retriever</strong> &mdash; finds relevant reference designs by semantic search</div>
-            <div class="phase-item"><strong>Rubric Generator</strong> &mdash; extracts methodology and converts to scoring criteria</div>
-            <div class="phase-item"><strong>Evaluator</strong> &mdash; LLM-based agent assigns weighted scores with justifications</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="design-results">
-        <h3>Automated RC Beam Design Results</h3>
-        <div class="design-stats-grid">
-          <div class="design-stat"><span class="ds-num">33/33</span><span class="ds-label">Code-compliant designs</span></div>
-          <div class="design-stat"><span class="ds-num">r = 0.99</span><span class="ds-label">Moment &amp; shear vs ETABS</span></div>
-          <div class="design-stat"><span class="ds-num">r = 0.976</span><span class="ds-label">RAG vs hardcoded evaluator</span></div>
-          <div class="design-stat"><span class="ds-num">&lt;$2</span><span class="ds-label">Per beam design (GPT-4o)</span></div>
-          <div class="design-stat"><span class="ds-num">0 changes</span><span class="ds-label">To extend to column design</span></div>
-        </div>
-        <p class="design-note">The pipeline executed 60 LLM calls consuming ~887K tokens for a single representative beam design, producing ~15,200 words of step-by-step documentation with Python execution logs and ACI 318 references at every decision point.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- BIBTEX -->
   <section id="bibtex" class="section section-dark">
     <div class="container">
@@ -655,7 +660,6 @@ sup { font-size: 0.65em; vertical-align: super; }
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p><strong>Structures &amp; Artificial Intelligence Lab</strong> &nbsp;&middot;&nbsp; University of Houston</p>
       <p>Published in <strong>Computer-Aided Civil and Infrastructure Engineering (CACAIE)</strong></p>
       <p>Supported by the Center for Visual Structural Expertise for Resilience (C-ViSER) at UH.</p>
       <p class="footer-links">
@@ -664,39 +668,31 @@ sup { font-size: 0.65em; vertical-align: super; }
         <a href="https://huggingface.co/datasets/hoskerelab/PE_Civil_Bench" target="_blank" rel="noopener">Data</a> &nbsp;&middot;&nbsp;
         <a href="https://drags99.github.io/bridge-eqa/" target="_blank" rel="noopener">Related Work: BridgeEQA</a>
       </p>
+      <div class="footer-lab">
+        <a href="https://sail.cive.uh.edu/" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          Structures &amp; Artificial Intelligence Lab &mdash; University of Houston
+        </a>
+        <span>sail.cive.uh.edu</span>
+      </div>
       <p class="footer-small">Website template inspired by <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.</p>
     </div>
   </footer>
 
+  <script src="main.js"></script>
   <script>
-// Scroll Reveal
-const revealEls = document.querySelectorAll('.contrib-card, .finding-card, .phase, .sample-q, .design-stat, .stat, .corr-section');
-revealEls.forEach(el => el.classList.add('reveal'));
-const observer = new IntersectionObserver((entries) => {
+// Scroll Reveal (include corr-section)
+const revealEls2 = document.querySelectorAll('.corr-section');
+revealEls2.forEach(el => el.classList.add('reveal'));
+const observer2 = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      const siblings = [...entry.target.parentElement.children];
-      const idx = siblings.indexOf(entry.target);
-      setTimeout(() => entry.target.classList.add('visible'), idx * 60);
-      observer.unobserve(entry.target);
+      entry.target.classList.add('visible');
+      observer2.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
-
-// Active nav on scroll
-const sections = document.querySelectorAll('section[id], header[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(a => a.classList.remove('active'));
-      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { threshold: 0.35 });
-sections.forEach(s => navObserver.observe(s));
+revealEls2.forEach(el => observer2.observe(el));
 
 // Copy BibTeX
 function copyBibtex() {
