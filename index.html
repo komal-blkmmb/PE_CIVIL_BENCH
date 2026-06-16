@@ -51,7 +51,7 @@ sup { font-size: 0.65em; vertical-align: super; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
 /* HERO */
-.hero { background: linear-gradient(160deg, var(--navy) 0%, var(--steel) 100%); padding: 72px 24px 0; text-align: center; }
+.hero { background: linear-gradient(160deg, var(--navy) 0%, var(--steel) 100%); padding: 72px 24px 64px; text-align: center; }
 .hero-inner { max-width: 860px; margin: 0 auto; }
 .paper-title { font-family: var(--font-serif); font-size: clamp(1.55rem,4vw,2.25rem); font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 28px; letter-spacing: -0.01em; }
 .authors { font-size: 0.95rem; color: rgba(255,255,255,0.85); margin-bottom: 10px; }
@@ -72,6 +72,7 @@ sup { font-size: 0.65em; vertical-align: super; }
 .btn-secondary:hover { background: rgba(255,255,255,0.18); }
 
 /* STAT STRIP */
+.stat-band { background: var(--navy); padding: 0 16px; }
 .stat-strip { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0; flex-wrap: wrap; }
 .stat { display: flex; flex-direction: column; align-items: center; padding: 0 32px; }
 .stat-num { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: var(--gold); line-height: 1; }
@@ -281,18 +282,6 @@ sup { font-size: 0.65em; vertical-align: super; }
           Data
         </a>
       </div>
-
-      <div class="stat-strip">
-        <div class="stat"><span class="stat-num">150</span><span class="stat-label">FE / PE Civil Questions</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">13</span><span class="stat-label">LLMs Evaluated</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">33</span><span class="stat-label">RC Beam Designs</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">r &ge; 0.90</span><span class="stat-label">Agreement with ETABS</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">&lt;$2</span><span class="stat-label">Cost per Design Run</span></div>
-      </div>
     </div>
   </header>
 
@@ -358,6 +347,21 @@ sup { font-size: 0.65em; vertical-align: super; }
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- KEY STATS -->
+  <section class="stat-band">
+    <div class="stat-strip">
+      <div class="stat"><span class="stat-num">150</span><span class="stat-label">FE / PE Civil Questions</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">13</span><span class="stat-label">LLMs Evaluated</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">33</span><span class="stat-label">RC Beam Designs</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">r &ge; 0.90</span><span class="stat-label">Pearson correlation (r), agreement with ETABS</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">&lt;$2</span><span class="stat-label">Cost per Design Run</span></div>
     </div>
   </section>
 
